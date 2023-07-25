@@ -55,7 +55,6 @@ function updateCartCounter(){
     }
 }
 function toggleCartList(){
-    console.log(cart);
     cartList.classList.toggle('activeCart')
 }
 function removeCartList(){
@@ -65,7 +64,6 @@ function updateCart(){
     list.classList.add('filled')
     num.innerText = quantity
     total.innerText = `$${125 * quantity}.00`
-    console.log(emptyCart);
 }
 function deleteCartList(){
     quantity = 0
@@ -102,7 +100,16 @@ addToCartBtn.addEventListener('click',()=>{
 })
 for(let i = 0; i < thumbnails.length;i++){
     thumbnails[i].addEventListener('click',(e)=>{
+        let target = e.target
         productImg.setAttribute('src',`images/image-product-${i+1}.jpg`)
+        for(let j = 0; j < thumbnails.length; j++){
+            if(thumbnails[j].parentElement.classList.contains('select')){
+                thumbnails[j].parentElement.classList.remove('select')
+            }
+            target.parentElement.classList.add('select')
+            
+        }
+        target.parentElement.classList.add('select')
     })
 }
 cart.addEventListener('click', toggleCartList)

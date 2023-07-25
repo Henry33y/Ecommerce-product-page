@@ -6,14 +6,12 @@
     --Dark-grayish-blue: hsl(219, 9%, 45%);
     --Grayish-blue: hsl(220, 14%, 75%);
     --Light-grayish-blue: hsl(223, 64%, 98%);
+    --Light-grayish-blue-low: hsla(223, 64%, 98%,0.65);
     --White: hsl(0, 0%, 100%);
     --Black-with-75-opacity-for-lightbox-background: hsla(0, 0%, 0%, 0.75);
 }
-html{
+html,body{
     overflow-x: hidden;
-}
-body{
-    width: 100vw;
 }
 *{
     box-sizing: border-box;
@@ -60,6 +58,9 @@ a{
 .mynav-link:hover::after{
     width: 100%;
     transform: scaleX(1);
+}
+.mobile-navlink::after{
+    bottom: -4px;
 }
 .cart{
     cursor: pointer;
@@ -127,6 +128,18 @@ a{
     border-radius: inherit;
     cursor: pointer;
 }
+.thumbnail > img{
+    transition: opacity 300ms;
+}
+.thumbnail:hover > img{
+    opacity: 0.5;
+}
+.thumbnail.select{
+    outline: 2px solid var(--Orange);
+}
+.thumbnail.select > img{
+    opacity: 0.5;
+}
 .description-section > :nth-child(1){
     color: var(--Orange);
     font-weight: 700;
@@ -161,6 +174,8 @@ a{
 .inputfield{
     background-color: var(--Light-grayish-blue);
     position: relative;
+    font-weight: 700;
+    color: var(--Very-dark-blue);
 }
 .decrease,.increase{
     position: absolute;
@@ -177,12 +192,16 @@ a{
     justify-content: center;
     align-items: center;
     padding-bottom: 6px;
+    transition: 300ms;
 }
 .decrease{
     left: 0;
 }
 .increase{
     right: 0;
+}
+.increase:hover,.decrease:hover{
+    color: var(--Orange-low);
 }
 .addToCart-btn{
     height: 100%;
